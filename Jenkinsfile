@@ -1,14 +1,12 @@
 pipeline {
   agent any
-  triggers {
-        githubPush()
-      }
+ 
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   
    stages {
-    stage('Name BrancHHHh') {
+    stage('Name Branch3') {
        steps {
          echo 'Build Number: ' + env.BUILD_NUMBER
          echo 'Building Branch: ' + env.BRANCH_NAME
