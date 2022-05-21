@@ -8,7 +8,7 @@ pipeline {
     stage('BrANCH NAME22x') {
        steps {
          echo 'Build DEV Number: ' + env.BUILD_NUMBER
-         echo 'Building Branch: ' + env.BRANCH_NAME
+         echo 'Building Branchxxxx: ' + env.BRANCH_NAME
        }
     }  
   
