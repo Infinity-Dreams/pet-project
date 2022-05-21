@@ -7,11 +7,13 @@ pipeline {
    stages {
     stage('Compile') {
        steps {
-         sh 'ls -la'
+         echo 'Build Number: ' + env.BUILD_NUMBER
+         echo 'Building Branch: ' + env.BRANCH_NAME
        }
-    }   
-   
-
+    }  
+  
+ 
+ 
   }
    
-}
+} 
