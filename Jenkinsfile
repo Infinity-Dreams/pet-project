@@ -1,9 +1,5 @@
 pipeline {
-  agent any
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
-  
+  agent any  
      stages {
        stage('Compile') {
          steps {
@@ -26,6 +22,15 @@ pipeline {
                 echo 'Quality Gate'
             }
         }
+       
+         stage('parallel stage 1') {
+                    when {
+                      expression { ENV == "stage" }
+                    }
+                    steps {
+                        echo 'something'
+                    }
+                }
         
          stage('Building our image') {
             steps {
@@ -53,13 +58,11 @@ pipeline {
                             }
 
                         }
-         stage('deploy DEV'){
-                 if(env.BRANCH_NAME == 'master')
-                 {
+         stage('deploy DEV'){       
                       steps {
                            echo 'Build Number: ' + env.BUILD_NUMBER
                            echo 'deploy to Branch: ' + env.BRANCH_NAME 
-                  }
+                
                }
                
           } 
