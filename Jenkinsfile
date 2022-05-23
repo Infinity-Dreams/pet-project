@@ -4,41 +4,59 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   
-   stages {
-    stage('Compile') {
-       steps {
-         sh 'mvn compile' //only compilation of the code
-       }
-    }  
-   stage('Test') {
-     steps {
-       sh '''
-       mvn clean install
-       ls
-       pwd
-       ''' 
-        //if the code is compiled, we test and package it in its distributable format; run IT and store in local repository
-      }
-    }
-    stage('Building our image') {
+     stages {
+       stage('Compile') {
+         steps {
+             echo 'Compile maven'
+          }
+        }  
+        stage('Test') {
+          steps {
+             echo 'Test maven'
+                 }
+              }
+         stage('SonarQScan') {
+          steps {
+              echo 'SonarQScan'
+                  }
+                }
+
+         stage("Quality Gate") {
+            steps {
+                echo 'Quality Gate'
+            }
+        }
+        
+         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build "st251/petclinic:$BUILD_NUMBER"
+                    echo 'Building our image'
                 }
             }
         }
-    stage('Deploy our image') {
-            steps {
+         stage('push our image to DHub') {
+             steps {
                 script {
-                    // Assume the Docker Hub registry by passing an empty string as the first parameter
-                    docker.withRegistry('' , 'dockerhub-st251-jenkins') {
-                        dockerImage.push()
+                      echo 'push our image to DHub'
                     }
                 }
             }
-        } 
+        }
+         stage('deploy PROD'){
+               when { branch 'main' } 
+                 steps {
+                             echo 'Build Number: ' + env.BUILD_NUMBER
+                             echo 'deploy to Branch: ' + env.BRANCH_NAME 
+                            }
+
+                        }
+         stage('deploy DEV'){
+              when { branch 'dev' } 
+                steps {
+                           echo 'Build Number: ' + env.BUILD_NUMBER
+                           echo 'deploy to Branch: ' + env.BRANCH_NAME 
+                  } 
+          } 
+    }
  
- 
-  }
-   
-} 
+}
