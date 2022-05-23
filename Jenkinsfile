@@ -45,7 +45,7 @@ pipeline {
          stage('deploy PROD'){
                when { branch 'main' } 
                  steps {
-                             echo 'Build Number: ' + env.BUILD_NUMBER
+                             echo 'Build Numberr: ' + env.BUILD_NUMBER
                              echo 'deploy to Branch: ' + env.BRANCH_NAME 
                             }
 
