@@ -54,10 +54,10 @@ pipeline {
 
                         }
          stage('deploy DEV'){
-              when { 
-                 expression{ env.BRANCH_NAME == 'dev' 
-                                      }
-                         } 
+                 if(env.BRANCH_NAME == 'master')
+                 {
+                      echo "This is the master branch"
+                     }
                 steps {
                            echo 'Build Number: ' + env.BUILD_NUMBER
                            echo 'deploy to Branch: ' + env.BRANCH_NAME 
