@@ -56,12 +56,12 @@ pipeline {
          stage('deploy DEV'){
                  if(env.BRANCH_NAME == 'master')
                  {
-                      echo "This is the master branch"
-                     }
-                steps {
+                      steps {
                            echo 'Build Number: ' + env.BUILD_NUMBER
                            echo 'deploy to Branch: ' + env.BRANCH_NAME 
-                  } 
+                  }
+               }
+               
           } 
     }
  
