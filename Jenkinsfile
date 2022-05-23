@@ -43,7 +43,10 @@ pipeline {
             }
         
          stage('deploy PROD'){
-               when { branch 'main' } 
+               when { 
+                 expression{ BRANCH_NAME == 'main' 
+                                      }
+               } 
                  steps {
                              echo 'Build Numberr: ' + env.BUILD_NUMBER
                              echo 'deploy to Branch: ' + env.BRANCH_NAME 
@@ -51,7 +54,10 @@ pipeline {
 
                         }
          stage('deploy DEV'){
-              when { branch 'dev' } 
+              when { 
+                 expression{ BRANCH_NAME == 'dev' 
+                                      }
+                         } 
                 steps {
                            echo 'Build Number: ' + env.BUILD_NUMBER
                            echo 'deploy to Branch: ' + env.BRANCH_NAME 
