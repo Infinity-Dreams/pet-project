@@ -44,7 +44,7 @@ pipeline {
         
          stage('deploy PROD'){
                when { 
-                 expression{ BRANCH_NAME == 'main' 
+                 expression{ env.BRANCH_NAME == 'main' 
                                       }
                } 
                  steps {
@@ -55,7 +55,7 @@ pipeline {
                         }
          stage('deploy DEV'){
               when { 
-                 expression{ BRANCH_NAME == 'dev' 
+                 expression{ env.BRANCH_NAME == 'dev' 
                                       }
                          } 
                 steps {
