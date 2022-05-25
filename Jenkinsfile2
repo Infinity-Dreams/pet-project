@@ -1,31 +1,50 @@
-pipeline {
-    agent any
-    stages {
+
+ pipeline {
+
+  agent any
+
+  stages {
+   
       stage('checkout'){
             steps{
                 git branch: 'main', url: 'https://github.com/Infinity-Dreams/unit.git'
             }
         }
-
-        stage('build') {
-            when { branch 'main' }
-            stages {
-                stage('compile') {
-                    steps {
-                        echo 'compile'
-                    }
-                }
-                stage('test') {
-                    steps {
-                        echo 'test'
-                    }
-                }
-                stage('package') {
-                    steps {
-                        echo 'package'
-                    }
-                }
-            }
-        }
+    stage("Build") {
+      steps {
+        echo "Building..."
+      }
     }
+
+    stage("Unit Tests") {
+      steps {
+        echo "Unit Testing..."
+      }
+    }
+
+    stage("Integration Tests") {
+      steps {
+        echo "Integration Testing..."
+      }
+    }
+
+    stage("Publish") {
+      when {
+         branch 'dev'
+          }
+      steps {
+        echo "Publishing..."
+      }
+    }
+
+    stage("Deploy") {
+      when {
+        branch 'master'
+      }
+
+      steps {
+        echo "Deploying..."
+      }
+    }
+  }
 }
