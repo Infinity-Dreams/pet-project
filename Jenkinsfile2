@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+      stage('checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Infinity-Dreams/unit.git'
+            }
+        }
+
         stage('build') {
             when { branch 'main' }
             stages {
