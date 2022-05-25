@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('build') {
-            when { branch 'master' }
+            when { branch 'main' }
             stages {
                 stage('compile') {
                     steps {
