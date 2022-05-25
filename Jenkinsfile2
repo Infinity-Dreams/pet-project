@@ -16,7 +16,7 @@ pipeline {
             }
         }
         
-        stage('Example Deploy') {
+        stage('Example Deplocmmmmmmmwe242mmmmy') {
             when {
                 branch 'stage'
             }
@@ -24,7 +24,7 @@ pipeline {
                 echo 'Deploying'
             }
         }
-        stage('Examcxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxple Deploy') {
+        stage('Examcxxc Deploy') {
             when {
                 branch 'main'
             }
