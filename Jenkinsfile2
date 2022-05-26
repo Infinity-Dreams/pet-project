@@ -40,7 +40,7 @@ pipeline {
         branch 'prod'
       }
       steps {
-        echo '${env.BUILD_NUMBER}'
+        echo "${env.BUILD_NUMBER}"
         sh 'echo deploy to prod '
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
@@ -50,14 +50,14 @@ pipeline {
     }
     stage('Finish') {
     steps{
-    echo '${env.BUILD_NUMBER}'
+    echo "${env.BUILD_NUMBER}"
         sh '''
    #!/bin/bash
    secs=5
    sec=10
    while [ $secs -ge 0 ]; do
                                  echo -ne "$secs\033[0K\r"
-                                 let "secs=secs-1"
+                                 secs=secs-1
                                  sleep 1
                          done
 fi
