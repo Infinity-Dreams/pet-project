@@ -64,7 +64,7 @@ pipeline {
         status: "Build Success",
         webhookUrl: "https://epam.webhook.office.com/webhookb2/2d1596f4-af98-49f9-8d2b-9337a0e8fb5d@b41b72d0-4e9f-4c26-8a69-f949f367c91d/JenkinsCI/d8c1fee460a74aafbb5c81a84990fd23/60be1e9f-ec66-4d5b-a6d6-ab2b7a51705b",
         color: '00ff00',
-        message: "Commit is $GIT_HASH --- $RELEASE_NOTES"
+        message: "$RELEASE_NOTES"
         )  
       
     }
@@ -73,7 +73,7 @@ pipeline {
         status: "Build Failed",
         webhookUrl: "https://epam.webhook.office.com/webhookb2/2d1596f4-af98-49f9-8d2b-9337a0e8fb5d@b41b72d0-4e9f-4c26-8a69-f949f367c91d/JenkinsCI/d8c1fee460a74aafbb5c81a84990fd23/60be1e9f-ec66-4d5b-a6d6-ab2b7a51705b",
         color: 'ff4000',
-        message: "The build has failed, please check build logs"
+        message: "The build has failed, please check build logs.$RELEASE_NOTES"
         )
     }
   }
