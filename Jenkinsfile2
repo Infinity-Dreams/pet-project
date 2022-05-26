@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Example Deploy') {
     
-    if env.BRANCH_NAME == "master" {
+    if env.BRANCH_NAME == "dev" {
           
       steps {
         sh 'echo Deploying main'
