@@ -19,7 +19,7 @@ pipeline {
         branch 'dev'
       }
       steps {
-        sh 'echo Deploying dev '
+        sh 'echo Dep3mloying dev '
       }
     }
   }
