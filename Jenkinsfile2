@@ -19,8 +19,12 @@ pipeline {
         branch 'prod'
       }
       steps {
-        echo 'Staying..'
-        sh 'echo Stay to prod '
+        echo 'Stayin in prod'
+ 
+        input {
+                message "Are you ready for deploy in prod?"
+                ok "Yes, we are."
+            }
       }
     }
    stage('Examdple Deploy') {
@@ -29,6 +33,10 @@ pipeline {
       }
       steps {
         sh 'echo deploy to prod '
+        echo '---------------------------------------------=========================================================================='
+        echo '-------------------------------------------------------Stayin in prod====================================='
+            echo '---------------------------------------------=========================================================================='
+
       }
     }
   }
