@@ -7,14 +7,13 @@ pipeline {
       }
     }
     stage('Example Deploy') {
-    
-    if env.BRANCH_NAME == "dev" {
-          
+      when {
+        branch 'main'
+      } 
       steps {
         sh 'echo Deploying main'
       }
-              }
- 
+             
     }
    stage('Examdple Deploy') {
       when {
