@@ -20,7 +20,7 @@ pipeline {
     stage('SonarQube test') {
       steps {
         echo ' SonarQube test'
-        sh 'echo Deploying main "$RELEASE_NOTES"'
+        echo "$RELEASE_NOTES"
         echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
