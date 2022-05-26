@@ -1,5 +1,12 @@
 pipeline {
   agent any
+  environment {
+  OCTOPUS_ID = ""
+  DOCKER_REGISTRY = ""
+  VERSION = "$BUILD_TIMESTAMP"
+  DEPLOY = ""
+  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""", returnStdout:true)
+}
   stages {
     stage('Example compile') {
       steps {
@@ -22,7 +29,7 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh 'echo Deploying main'
+        sh 'echo Deploying main "$RELEASE_NOTES"'
       }
     }
    stage('location prod') {
@@ -41,6 +48,7 @@ pipeline {
       }
       steps {
         echo "${env.BUILD_NUMBER}"
+        echo "${env.COMIT}"
         sh 'echo deploy to prod '
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
