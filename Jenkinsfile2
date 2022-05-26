@@ -19,7 +19,7 @@ pipeline {
         branch 'prod'
       }
       steps {
-        echo 'state in prod '
+        echo "state in prod"
         sh 'deploy to prod '
       }
     }
