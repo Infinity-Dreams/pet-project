@@ -13,7 +13,7 @@ pipeline {
     stage('Example test') {
       steps {
         echo ' mvn test'
-        echo "Deploying main ${RELEASE_NOTES}"
+        sh 'echo Deploying main "$RELEASE_NOTES"'
 
       }
     }
