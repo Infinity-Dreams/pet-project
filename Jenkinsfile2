@@ -16,10 +16,10 @@ pipeline {
     }
    stage('Examdple Deploy') {
       when {
-        branch 'dev'
+        branch 'prod'
       }
       steps {
-        sh 'echo Dep3mloying dev '
+        sh 'deploy to prod '
       }
     }
   }
