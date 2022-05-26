@@ -14,7 +14,7 @@ pipeline {
     stage('SonarQube test') {
       steps {
         echo ' SonarQube test'
-        echo 'env.BRANCH_NAME'
+        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
     stage('Example Deploy') {
@@ -40,13 +40,22 @@ pipeline {
         branch 'prod'
       }
       steps {
-        echo 'env.BRANCH_NAME'
+        echo '${env.BUILD_NUMBER}'
+        sh 'echo deploy to prod '
+        echo '---------------------------=============================================='
+        echo '--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================='
+            echo '----------------------------------============================================================'
+
+      }
+    }
+    stage('Finish') {
+    echo 'env.BRANCH_NAME'
         sh 'echo deploy to prod '
         echo '---------------------------------------------=========================================================================='
         echo '-------------------------------------------------------Deploy in prod. Branch + env.BRANCH_NAME====================================='
             echo '---------------------------------------------=========================================================================='
 
-      }
+    
     }
   }
 }
