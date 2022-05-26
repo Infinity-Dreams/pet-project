@@ -72,10 +72,7 @@ pipeline {
         color: '#0000FF'           
        }
      }
-     post {
-        success {
-      mail to: Yurii_Diduk@epam.com, subject: ‘The Pipeline success :(‘
-    }
-   }
+     
+   
   }
 }
