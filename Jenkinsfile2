@@ -1,10 +1,7 @@
 pipeline {
   agent any
   environment {
-  OCTOPUS_ID = ""
-  DOCKER_REGISTRY = ""
-  VERSION = "$BUILD_TIMESTAMP"
-  DEPLOY = ""
+ 
   RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""", returnStdout:true)
 }
   stages {
@@ -16,6 +13,8 @@ pipeline {
     stage('Example test') {
       steps {
         echo ' mvn test'
+        sh 'echo Deploying main "$RELEASE_NOTES"'
+
       }
     }
     stage('SonarQube test') {
