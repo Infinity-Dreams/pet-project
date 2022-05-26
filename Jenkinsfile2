@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
   GIT_HASH = GIT_COMMIT.take(7)
-  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""")
+  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}, returnStdout:true""")
 }
   stages {
     stage('Example compile') {
@@ -13,13 +13,14 @@ pipeline {
     stage('Example test') {
       steps {
         echo ' mvn test'
-        sh 'echo Deploying main "$RELEASE_NOTES"'
+        echo "Deploying main ${RELEASE_NOTES}"
 
       }
     }
     stage('SonarQube test') {
       steps {
         echo ' SonarQube test'
+        sh 'echo Deploying main "$RELEASE_NOTES"'
         echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
