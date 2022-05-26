@@ -1,36 +1,26 @@
 pipeline {
-    agent any
-    stages {
-        stage('Example Build') {
-            steps {
-                echo 'Hellxno World'
-            }
-        }
-        
-        stage('Example Dev') {
-            when {
-                branch 'dev'
-            }
-            steps {
-                echo 'Develop'
-            }
-        }
-        
-        stage('Example Deplocmmmmmmmwe242mmmmy') {
-            when {
-                branch 'stage'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
-        stage('Examcxxc Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploying main'
-            }
-        }
+  agent any
+  stages {
+    stage('Example Build') {
+      steps {
+        sh 'echo Hello World'
+      }
     }
+    stage('Example Deploy') {
+      when {
+        branch 'main'
+      }
+      steps {
+        sh 'echo Deploying main'
+      }
+    }
+   stage('Examdple Deploy') {
+      when {
+        branch 'dev'
+      }
+      steps {
+        sh 'echo Deploying dev '
+      }
+    }
+  }
 }
