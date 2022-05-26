@@ -1,9 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('Example Build') {
+    stage('Example compile') {
       steps {
-        sh 'echo Hello World'
+        echo 'Start compile'
+      }
+    }
+    stage('Example test') {
+      steps {
+        echo ' mvn test'
+      }
+    }
+    stage('SonarQube test') {
+      steps {
+        echo ' SonarQube test'
+        echo 'env.BRANCH_NAME'
       }
     }
     stage('Example Deploy') {
@@ -19,10 +30,8 @@ pipeline {
         branch 'prod'
       }
       steps {
-        echo 'Stayin in prod'
- 
+        echo 'Stayin in prod' 
         input "Are you ready for deploy in prod?"
-                ok "Yes, we are."
             
       }
     }
@@ -31,9 +40,10 @@ pipeline {
         branch 'prod'
       }
       steps {
+        echo 'env.BRANCH_NAME'
         sh 'echo deploy to prod '
         echo '---------------------------------------------=========================================================================='
-        echo '-------------------------------------------------------Stayin in prod====================================='
+        echo '-------------------------------------------------------Deploy in prod. Branch + env.BRANCH_NAME====================================='
             echo '---------------------------------------------=========================================================================='
 
       }
