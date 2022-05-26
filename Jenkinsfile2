@@ -13,7 +13,7 @@ pipeline {
     stage('Example test') {
       steps {
         echo ' mvn test'
-        sh 'echo Deploying main "$RELEASE_NOTES"'
+        echo "$RELEASE_NOTES"
 
       }
     }
@@ -53,7 +53,7 @@ pipeline {
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
-        echo "${env.BUILD_NUMBER}"
+        echo "${env.BUILD_NUMBE2R}"
         sh '/home/paragon/Documents/time.sh'
       }
     }
