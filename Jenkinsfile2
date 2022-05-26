@@ -43,14 +43,14 @@ pipeline {
         echo '${env.BUILD_NUMBER}'
         sh 'echo deploy to prod '
         echo '---------------------------=============================================='
-        echo '--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================='
+        echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
 
       }
     }
     stage('Finish') {
     steps{
-    echo 'env.BRANCH_NAME'
+    echo '${env.BUILD_NUMBER}'
         sh '''
    #!/bin/bash
    secs=5
