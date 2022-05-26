@@ -53,14 +53,9 @@ pipeline {
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
-
-      }
-    }
-
-    echo "${env.BUILD_NUMBER}"
+        echo "${env.BUILD_NUMBER}"
         sh '/home/paragon/Documents/time.sh'
-        }
-    
+      }
     }
     stage ('FINISH2') {
     steps {
@@ -71,6 +66,7 @@ pipeline {
         color: '#0000FF'           
        }
      }
+    }
    post{
   success{
     office365ConnectorSend(
@@ -90,4 +86,4 @@ pipeline {
         )
     }
   }
-
+}
