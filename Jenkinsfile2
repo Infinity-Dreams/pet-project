@@ -80,7 +80,7 @@ pipeline {
         color: '#0000FF'           
        }
      }
-     
+     }
    post{
   success{
     office365ConnectorSend(
