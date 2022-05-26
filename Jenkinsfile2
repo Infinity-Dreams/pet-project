@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
- 
+  GIT_HASH = GIT_COMMIT.take(7)
   RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""", returnStdout:true)
 }
   stages {
@@ -47,7 +47,7 @@ pipeline {
       }
       steps {
         echo "${env.BUILD_NUMBER}"
-        echo "${env.COMIT}"
+        echo "$GIT_HASH"
         sh 'echo deploy to prod '
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
