@@ -52,7 +52,6 @@ pipeline {
     steps{
     echo "${env.BUILD_NUMBER}"
         sh '/home/paragon/Documents/time.sh'
-   echo "............FINISH..................."
         }
     
     }
