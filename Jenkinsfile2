@@ -14,12 +14,21 @@ pipeline {
         sh 'echo Deploying main'
       }
     }
+   stage('location prod') {
+      when {
+        branch 'prod'
+      }
+      steps {
+        echo 'Staying..'
+        sh 'echo Stay to prod '
+      }
+    }
    stage('Examdple Deploy') {
       when {
         branch 'prod'
       }
       steps {
-        sh 'deploy to prod '
+        sh 'echo deploy to prod '
       }
     }
   }
