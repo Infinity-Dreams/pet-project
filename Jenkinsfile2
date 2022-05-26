@@ -51,7 +51,8 @@ pipeline {
     stage('Finish') {
     steps{
     echo 'env.BRANCH_NAME'
-        sh '#!/bin/bash
+        sh '''
+   #!/bin/bash
    secs=5
    sec=10
    while [ $secs -ge 0 ]; do
@@ -61,7 +62,8 @@ pipeline {
                          done
 fi
    
-   echo "............FINISH..................."'
+   echo "............FINISH..................."
+   '''
         }
     
     }
