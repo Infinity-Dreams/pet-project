@@ -53,8 +53,8 @@ pipeline {
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
-        echo "${env.BUILD_NUMBER} == = ===" +
-        sh '/home/paragon/Documents/time.sh'
+        echo "${env.BUILD_NUMBER}"
+        sh '/home/paragon/Documents/timme.sh'
       }
     }
   }
