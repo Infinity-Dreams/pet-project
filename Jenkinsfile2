@@ -51,19 +51,8 @@ pipeline {
     stage('Finish') {
     steps{
     echo "${env.BUILD_NUMBER}"
-        sh '''
-   #!/bin/bash
-   secs=5
-   sec=10
-   while [ $secs -ge 0 ]; do
-                                 echo -ne "$secs\033[0K\r"
-                                 secs=secs-1
-                                 sleep 1
-                         done
-fi
-   
+        sh '/home/paragon/Documents/time.sh'
    echo "............FINISH..................."
-   '''
         }
     
     }
