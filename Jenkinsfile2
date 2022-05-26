@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
   GIT_HASH = GIT_COMMIT.take(7)
-  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""")
+  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}, returnStdout:true""")
 }
   stages {
     stage('Example compile') {
@@ -59,7 +59,8 @@ pipeline {
     stage('Finish') {
     steps{
     office365ConnectorSend (
-    webhookUrl: "${webhookURL}",
+    webhookUrl: "https://epam.webhook.office.com/webhookb2/2d1596f4-af98-49f9-8d2b-9337a0e8fb5d@b41b72d0-4e9f-4c26-8a69-f949f367c91d/JenkinsCI/d8c1fee460a74aafbb5c81a84990fd23/60be1e9f-ec66-4d5b-a6d6-ab2b7a51705b
+",
     color: "${currentBuild.currentResult} == 'SUCCESS' ? '00ff00' : 'ff0000'",
     factDefinitions:[
         [ name: "Commit Message", template: "${RELEASE_NOTES}"],
