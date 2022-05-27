@@ -54,7 +54,7 @@ pipeline {
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
         echo "${env.BUILD_NUMBER}"
-        sh '/home/paragon/Documents/timme.sh'
+
       }
     }
   }
