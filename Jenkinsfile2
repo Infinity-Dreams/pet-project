@@ -1,26 +1,61 @@
 pipeline {
   agent any
+  environment {
+  GIT_HASH = GIT_COMMIT.take(7)
+  RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""", returnStdout:true)
+}
   stages {
-    stage('Example Build') {
+      stage('DEVVVVVVVVVVV') {
+       when {
+        branch 'dev'
+      } 
       steps {
-        sh 'echo Hello World'
+        echo 'in Dev br'
+        echo "$RELEASE_NOTES"
+        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
+      }
+    }
+     
+    stage('SonarQube test') {
+      steps {
+        echo 'SonarQube test'
+        echo "$RELEASE_NOTES"
+        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
     stage('Example Deploy') {
       when {
         branch 'main'
+      } 
+      steps {
+        sh 'echo Deploying main "$RELEASE_NOTES"'
+      }
+    }
+   stage('location prod') {
+      when {
+        branch 'prod'
       }
       steps {
-        sh 'echo Deploying main'
+        echo 'Stayin in prod' 
+        input "Are you ready for deploy in prod?"
+            
       }
+             
     }
    stage('Examdple Deploy') {
       when {
         branch 'dev'
       }
       steps {
-        sh 'echo Deploying dev '
+        echo "${env.BUILD_NUMBER}"
+        echo " commit hash is $GIT_HASH"
+        sh 'echo deploy to dev '
+        echo '---------------------------=============================================='
+        echo "--------------------------Deploy in dev. Branch is ${env.BRANCH_NAME}====================================="
+            echo '----------------------------------============================================================'
+        echo "${env.BUILD_NUMBER}"
       }
     }
   }
+ 
 }
