@@ -49,7 +49,7 @@ pipeline {
       steps {
         echo "${env.BUILD_NUMBER}"
         echo " commit hash is $GIT_HASH"
-        sh 'echo deploy to dev '
+        sh 'echo deploy to devvvvvv '
         echo '---------------------------=============================================='
         echo "--------------------------Deploy in dev. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
