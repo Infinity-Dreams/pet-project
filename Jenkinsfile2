@@ -5,18 +5,17 @@ pipeline {
   RELEASE_NOTES = sh (script: """git log --format="medium" -1 ${GIT_COMMIT}""", returnStdout:true)
 }
   stages {
-    stage('Example compile') {
+      stage('DEVVVVVVVVVVV') {
+       when {
+        branch 'dev'
+      } 
       steps {
-        echo 'Start compile'
-      }
-    }
-    stage('Example test') {
-      steps {
-        echo ' mvn test'
+        echo 'in Dev br'
         echo "$RELEASE_NOTES"
-
+        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
+     
     stage('SonarQube test') {
       steps {
         echo ' SonarQube test'
@@ -55,7 +54,6 @@ pipeline {
         echo "--------------------------Deploy in prod. Branch is ${env.BRANCH_NAME}====================================="
             echo '----------------------------------============================================================'
         echo "${env.BUILD_NUMBER}"
-        sh '/home/paragon/Documents/timme.sh'
       }
     }
   }
