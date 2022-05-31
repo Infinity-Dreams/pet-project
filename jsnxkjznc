@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Example test') {
       steps {
-        echo ' mvn test'
+        echo ' mvnnmmnmnmmnnnnnnnmlkjouhougoggo test'
         echo "$RELEASE_NOTES"
 
       }
