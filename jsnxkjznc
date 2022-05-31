@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Example compile') {
       steps {
-        echo 'Start compile'
+        echo 'Starte3342v compile'
       }
     }
     stage('Example test') {
