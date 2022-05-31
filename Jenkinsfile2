@@ -15,7 +15,15 @@ pipeline {
         echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
       }
     }
-     
+     stage('Builxxxcd and deploy') {
+      when {
+        anyOf { branch 'dev' }
+      }
+      steps {
+                 echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
+
+      }
+    }
     stage('SonarQube test') {
       steps {
         echo ' SonarQube test'
