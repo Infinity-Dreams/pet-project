@@ -12,7 +12,7 @@ pipeline {
       steps {
         echo 'in Dev br'
         echo "$RELEASE_NOTES"
-        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
+        echo "The BRANCH_NAMnjkkE is ${env.BRANCH_NAME}"
       }
     }
      
