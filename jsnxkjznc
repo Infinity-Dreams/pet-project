@@ -21,7 +21,7 @@ pipeline {
       steps {
         echo ' SonarQube test'
         echo "$RELEASE_NOTES"
-        echo "The BRANCH_NAME is ${env.BRANCH_NAME}"
+        echo "The BRANCH_NAME isssss is ${env.BRANCH_NAME}"
       }
     }
     stage('Example Deploy') {
